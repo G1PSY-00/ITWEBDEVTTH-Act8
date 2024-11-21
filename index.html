@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color and Image Changer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.5s;
+        }
+        #container {
+            padding-top: 50px;
+        }
+        img {
+            width: 100%; 
+            max-width: 500px;  
+            height: auto;  
+            border-radius: 8px;
+            transition: all 0.5s;
+        }
+        button {
+            width: 50px;
+            height: 50px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            opacity: 0.8;
+        }
+        .paragraph {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <img id="image" src="images/elmo-burning.gif" alt="Image" onerror="this.onerror=null; this.src='images/fallback.jpg';">
+        <h1>Press the cubes :></h1>
+
+        <p id="blueParagraph" class="paragraph">Dragon Ball is combines intense action, memorable characters, and a powerful sense of growth and perseverance. The show’s iconic battles, where characters constantly push their limits, tap into a universal desire for self-improvement and overcoming challenges. Its rich worldbuilding and dynamic character arcs, particularly the evolution of heroes like Goku, offer a blend of excitement and relatability. Plus, the series’ humor, heartwarming moments, and legacy as a cultural touchstone make it a nostalgic favorite for many, creating a sense of connection across generations of fans.</p>
+        <p id="pinkParagraph" class="paragraph">Sailor Moon blends magical girl fantasy, coming-of-age themes, and a strong sense of friendship and empowerment. The series follows Usagi Tsukino, a relatable and sometimes clumsy heroine who transforms into the powerful Sailor Moon, battling evil while learning important life lessons about love, loyalty, and inner strength. Its vibrant world of magical powers, love interests, and diverse, strong female characters resonates with fans who appreciate the themes of self-discovery, teamwork, and fighting for what's right. The emotional depth, rich character development, and iconic transformations add to its enduring appeal, while the show’s blend of humor, drama, and romance has made it a beloved classic for fans of all ages, especially as it breaks stereotypes of traditional femininity by empowering girls to be both strong and caring.</p>
+        <p id="brownParagraph" class="paragraph">A lot of older Filipinos love watching Manny Pacquiao because he represents national pride and hope. Pacquiao is not just a boxing champion; he is a symbol of hard work, perseverance, and overcoming adversity. Coming from a poor background in the Philippines, his rise to global fame and success resonates deeply with many Filipinos, who see his story as an inspiration. His victories on the world stage brought pride to the country and created a sense of unity, especially during his major matches, which became nationwide events. For many older Filipinos, Pacquiao’s success is a reminder of how far they have come as a nation and the power of determination. His humility, generosity, and involvement in politics further cement his status as a national hero, making his fights more than just sporting events—they are moments of collective celebration.</p>
+
+        <br>
+        <button id="blueBtn" onclick="changeToBlue()">Blue</button>
+        <button id="pinkBtn" onclick="changeToPink()">Pink</button>
+        <button id="brownBtn" onclick="changeToBrown()">Brown</button>
+    </div>
+
+    <script>
+        function changeToBlue() {
+            document.body.style.backgroundColor = "blue";
+            document.getElementById("image").src = "images/gohan.jpg"; 
+            showParagraph("blueParagraph");
+            changeButtonColors("blue");
+        }
+
+        function changeToPink() {
+            document.body.style.backgroundColor = "pink";
+            document.getElementById("image").src = "images/sailor.jpeg"; 
+            showParagraph("pinkParagraph");
+            changeButtonColors("pink");
+        }
+
+        function changeToBrown() {
+            document.body.style.backgroundColor = "brown";
+            document.getElementById("image").src = "images/Manny.jpg";
+            showParagraph("brownParagraph");
+            changeButtonColors("brown");
+        }
+
+        function showParagraph(paragraphId) {
+            const paragraphs = document.querySelectorAll('.paragraph');
+            paragraphs.forEach(paragraph => {
+                paragraph.style.display = 'none';
+            });
+
+            document.getElementById(paragraphId).style.display = 'block';
+        }
+
+        function changeButtonColors(color) {
+            const blueBtn = document.getElementById("blueBtn");
+            const pinkBtn = document.getElementById("pinkBtn");
+            const brownBtn = document.getElementById("brownBtn");
+
+            if (color === "blue") {
+                blueBtn.style.backgroundColor = "blue";
+                pinkBtn.style.backgroundColor = "lightpink";
+                brownBtn.style.backgroundColor = "burlywood";
+            } else if (color === "pink") {
+                blueBtn.style.backgroundColor = "lightblue";
+                pinkBtn.style.backgroundColor = "pink";
+                brownBtn.style.backgroundColor = "burlywood";
+            } else if (color === "brown") {
+                blueBtn.style.backgroundColor = "lightblue";
+                pinkBtn.style.backgroundColor = "lightpink";
+                brownBtn.style.backgroundColor = "brown";
+            }
+        }
+    </script>
+
+</body>
+</html>
